@@ -1,0 +1,25 @@
+body {
+  font-family: Arial;
+}
+
+#editor {
+  vertical-align: top;
+  padding: 80px 55px 84px;
+  width: 100%;
+  min-height: 85vh;
+}
+
+/*testing*/
+.mycol {
+  border: 1px solid skyblue;
+}
+
+header .jumbotron {
+  height: 40vh;
+  margin-bottom: 0;
+  background: url(../images/headBackground.png) no-repeat 100% 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

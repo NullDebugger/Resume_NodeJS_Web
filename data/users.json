@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "title": "Education",
+      "name": "ZhiPan Chen",
+      "shortname": "Ken",
+      "summary": "I am Graduated from The university of Adelade with Bachelor of Computer Science in Artficial Intelligence  ",
+      "description": "<p><strong>About: </strong> With a great passion for solving problems, I am dedicated to using coding to simplify complex issues. I am able to bring new ideas to the table based on my expertise and experience. I am always keeping the importance of security in mind to make sure the product is secure and safe.</p>",
+      "artwork": ["Uni_adelaide_tn.jpg", "Ken_graduate_tn.jpg", "Ken_Transcript_tn.jpg"],
+      "display_title": "Courses",
+      "display_body": "<p><strong>Web and Database Computing (Grade: D)</strong> <ul><li>Understood the interaction between the client-side and server-side components of a web application.</li> <li>Developed user-friendly websites across the full stack from implementing the front-end user interface (HTML, CSS, and JavaScript, VUE, Node.js) to server-side logic and database management(MySQL).</li><li>Designed and built AJAX calls to the server and handle responses.</li></ul></p>"
+    },
+    {
+      "title": "Experience",
+      "name": "Zhipan Chen",
+      "shortname": "Ken",
+      "summary": "I am a faster leaner",
+      "description": "<p>Test</p>",
+      "artwork": [],
+      "display_title": "Test",
+      "display_body": "Test"
+    },
+    {
+      "title": "Project",
+      "name": "Zhipan Chen",
+      "shortname": "Ken",
+      "summary": "Test",
+      "description": "<p>Simple Website Build by NodeJS </p>",
+      "artwork": [],
+      "display_title": "Test",
+      "display_body": "Test"
+    }
+  ]
+}

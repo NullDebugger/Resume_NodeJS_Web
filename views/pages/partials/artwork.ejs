@@ -1,0 +1,9 @@
+<article class="sidebar">
+  <h1 class="sidebar-title">Photos</h1>
+  <!-- <p class="sidebar-body">Transcript & </p> -->
+  <div class="pixgrid clearfix">
+    <% artwork.forEach(function (item, key) {%>
+    <img src="/images/artwork/<%=item%>" alt="Artwork <%=key%>" />
+    <% }) %>
+  </div>
+</article>
