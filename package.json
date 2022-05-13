@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon service.js",
-    "dev": "nodemon --ignore feedback.json service.js"
+    "start": "nodemon app.js",
+    "dev": "nodemon --ignore feedback.json ./bin/start.js"
   },
   "dependencies": {
     "body-parser": "^1.20.0",

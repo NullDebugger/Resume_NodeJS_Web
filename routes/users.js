@@ -23,10 +23,8 @@ module.exports = (params) => {
 
   router.get('/:title', async (request, response, next) => {
     try {
-      // const user = await usersService.getuser(request.params.shortname);
       const information = await usersService.getInformation(request.params.title);
-      console.log(information);
-      // const artwork = await usersService.getArtworkForuser(request.params.shortname);
+      // console.log(information);
       const artwork = await usersService.getArtwork_title(request.params.title);
       return response.render('layout', {
         pageTitle: 'users',

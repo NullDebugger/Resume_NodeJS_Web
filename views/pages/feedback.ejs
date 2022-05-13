@@ -3,6 +3,7 @@
     <div class="col-md-4">
       <div class="maincontent">
         <h1>Send Feedback</h1>
+        <hr />
         <!-- Showing the Error of Feedback information  -->
         <div class="feedback-status">
           <% if(locals.errors) {%>
@@ -68,23 +69,21 @@
     <aside class="col-md-8">
       <div class="maincontent feedback">
         <h1>Feedback</h1>
-
+        <hr />
         <div class="feedback-items">
           <% feedback.forEach( function (item) { %>
-          <div class="feedback-item item-list media-list">
-            <div class="feedback-item media">
-              <div class="feedback-info media-body">
-                <div class="feedback-head">
-                  <div class="feedback-title"><%=item.title%></div>
-                  <small>by <%=item.name%></small>
-                </div>
-                <div class="feedback-message"><%=item.message%></div>
-              </div>
+          <div class="card" style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title"><%=item.title%></h5>
+              <h6 class="card-subtitle mb-2 text-muted">by <%=item.name%></h6>
+              <p class="card-text"><%=item.message%></p>
             </div>
           </div>
+          <hr />
           <% }) %>
         </div>
       </div>
     </aside>
+    <!-- End Showing All Feedback from the json file  -->
   </div>
 </div>
