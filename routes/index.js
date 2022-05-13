@@ -18,7 +18,7 @@ module.exports = (params) => {
       const topusers = await usersService.getList();
       return response.render('layout', {
         pageTitle: 'Welcome',
-        template: 'index',
+        template: '/resume/index',
         topusers,
         artwork,
       });

@@ -12,7 +12,7 @@ module.exports = (params) => {
       const artwork = await usersService.getAllPhotos();
       return response.render('layout', {
         pageTitle: 'users',
-        template: 'users',
+        template: '/resume/users',
         users,
         artwork,
       });
@@ -28,7 +28,7 @@ module.exports = (params) => {
       const artwork = await usersService.getArtwork_title(request.params.title);
       return response.render('layout', {
         pageTitle: 'users',
-        template: 'users-detail',
+        template: 'resume/users-detail',
         information,
         artwork,
       });
