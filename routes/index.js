@@ -1,8 +1,9 @@
 const express = require('express');
 
 // add user and feedback route
-const usersRoute = require('./users');
+const usersRoute = require('./resume/users');
 const feedbackRoute = require('./feedback');
+const smallshopRoute = require('./smallshop/smallshop');
 
 const req = require('express/lib/request');
 const { Template } = require('ejs');
@@ -29,6 +30,7 @@ module.exports = (params) => {
 
   router.use('/users', usersRoute(params));
   router.use('/feedback', feedbackRoute(params));
+  router.use('/smallshop', smallshopRoute(params));
 
   return router;
 };

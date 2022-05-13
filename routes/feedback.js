@@ -56,21 +56,21 @@ module.exports = (params) => {
     }
   });
 
-  //   Create a simple API
-  router.post('/api', validation, async (request, response, next) => {
-    try {
-      const errors = validationResult(request);
-      if (!errors.isEmpty()) {
-        return response.json({ errors: errors.array });
-      }
-      const { name, email, title, message } = request.body;
-      await feedbackService.addEntry(name, email, title, message);
-      //   update feedback entry
-      const feedback = await feedbackService.getList();
-      return response.json({ feedback, successMessage: 'Thank you for you feedback!' });
-    } catch (err) {
-      return next(err);
-    }
-  });
+  // //   Create a simple API
+  // router.post('/api', validation, async (request, response, next) => {
+  //   try {
+  //     const errors = validationResult(request);
+  //     if (!errors.isEmpty()) {
+  //       return response.json({ errors: errors.array });
+  //     }
+  //     const { name, email, title, message } = request.body;
+  //     await feedbackService.addEntry(name, email, title, message);
+  //     //   update feedback entry
+  //     const feedback = await feedbackService.getList();
+  //     return response.json({ feedback, successMessage: 'Thank you for you feedback!' });
+  //   } catch (err) {
+  //     return next(err);
+  //   }
+  // });
   return router;
 };
