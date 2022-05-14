@@ -1,0 +1,17 @@
+<!--main body-->
+<main id="smallshop">
+  <div class="container mt-4">
+    <!-- Add card with some navigation -->
+    <div class="card text-center">
+      <!-- Navigation -->
+      <%- include('partials/shop_navigation') %>
+      <!-- End Navigation -->
+
+      <!-- Start shop main body-->
+      <%- include(`../shop_pages/${shop_template}`) %>
+      <!-- End shop main body-->
+    </div>
+    <!-- End Add card with some navigation -->
+  </div>
+</main>
+<!--main body-->
