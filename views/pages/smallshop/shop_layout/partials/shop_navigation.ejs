@@ -4,8 +4,30 @@
       <a class="nav-link" aria-current="true" href="/smallshop">Home</a>
     </li>
     <li class="nav-item active">
+      <!-- The herf is refer to the  (router's use('xxx', router)) not to the file -->
       <a href="/smallshop/store" class="nav-link">Shop</a>
     </li>
-    <li class="nav-item active"><a href="/feedback" class="nav-link">Feedback</a></li>
+    <li class="nav-item active"><a href="/smallshop/basket" class="nav-link">Basket</a></li>
+    <!-- Start Admin -->
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Admin
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/smallshop/admin/user">User</a>
+        <a class="dropdown-item" href="/smallshop/admin/item">Item</a>
+        <a class="dropdown-item" href="/smallshop/admin/order">Order</a>
+      </div>
+    </li>
+    <!-- End Admin -->
   </ul>
 </div>
