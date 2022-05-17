@@ -1,7 +1,18 @@
 const http = require('http');
+// Add Mongoose
+const mongoose = require('mongoose');
 
 const config = require('../config');
 const App = require('../app');
+
+/* Function used to Connect to Mongoose Database */
+async function connectToMongoose() {
+  // get the url from config
+  return mongoose.connect(config.mongodb.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 /* Logic to start the application */
 const app = App(config);
@@ -38,5 +49,14 @@ function onListening() {
 }
 server.on('error', onError);
 server.on('listening', onListening);
+
+// Call the function connect to mongoose
+connectToMongoose()
+  .then(() => {
+    console.info('Successfully connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 server.listen(port);

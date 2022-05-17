@@ -1,12 +1,141 @@
 <div class="card-body">
-  <h5 class="card-title">Special title treatment</h5>
-  <p class="card-text">item</p>
-  <p class="card-text">item</p>
-  <p class="card-text">item</p>
-  <p class="card-text">item</p>
-  <p class="card-text">item</p>
-  <p class="card-text">item</p>
-  <p class="card-text">item</p>
-
-  <a href="#" class="btn btn-primary">Go somewhere</a>
+  <!-- Start DIV for Add Item information -->
+  <div class="card text-center">
+    <div class="card-header">
+      <% if(edit_item) { %>
+      <div>Edit Item</div>
+      <p><%= edit_item.id %></p>
+      <% } else { %>
+      <div>Add Item</div>
+    </div>
+    <%}%>
+    <!-- Showing the Error of Shop Item information  -->
+    <% if(shop_info) { %> <% const alert_type = `${JSON.stringify(shop_info.type)}`; %>
+    <div class="<%= `${JSON.parse(alert_type)}` %>" role="alert">
+      <p><%= `${JSON.stringify(shop_info.text)}`%></p>
+    </div>
+    <% } %>
+    <!-- Add the Item's nfomation -->
+    <div class="card-body">
+      <form method="POST" action="/smallshop/admin/item">
+        <!-- If We want to Edit the Item, We will sent the itemId to router(Post) -->
+        <% if(edit_item) {%>
+        <input
+          type="hidden"
+          name="edit_itemId"
+          class="form-control"
+          id="inputItemId"
+          value="<%= edit_item.id %>"
+        />
+        <%}else {%>
+        <input type="hidden" name="edit_itemId" class="form-control" id="inputItemId" value="" />
+        <% }%>
+        <!-- Add SKU -->
+        <div class="mb-3 row">
+          <label for="sku" class="col-sm-2 col-form-label">SKU</label>
+          <div class="col-sm-10">
+            <% if(edit_item) {%>
+            <input
+              type="number"
+              name="sku"
+              autocomplete="off"
+              class="form-control"
+              id="inputSKU"
+              value="<%= edit_item.sku %>"
+            />
+            <%}else {%>
+            <input
+              type="number"
+              name="sku"
+              autocomplete="off"
+              class="form-control"
+              id="inputSKU"
+              value=""
+            />
+            <% }%>
+          </div>
+        </div>
+        <!--  Add Item Name -->
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <% if(edit_item) {%>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              id="inputName"
+              value="<%= edit_item.name %>"
+            />
+            <%}else {%>
+            <input type="text" name="name" class="form-control" id="inputName" value="" />
+            <% }%>
+          </div>
+        </div>
+        <!-- Add Item Price -->
+        <div class="mb-3 row">
+          <label for="price" class="col-sm-2 col-form-label">Price</label>
+          <div class="col-sm-10">
+            <% if(edit_item) {%>
+            <input
+              type="text"
+              name="price"
+              class="form-control"
+              id="inputPassword"
+              value="<%= edit_item.price %>"
+            />
+            <%}else {%>
+            <input type="text" name="price" class="form-control" id="inputPassword" value="" />
+            <% }%>
+          </div>
+        </div>
+        <!-- Add Button -->
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </div>
+      </form>
+    </div>
+    <!-- End Add the Item's infomation -->
+  </div>
+  <!-- End DIV for Add Item information -->
+  <hr />
+  <!-- Showing All of the item-->
+  <% if(all_items) {%>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">SKU</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% all_items.forEach(function(items) { %>
+      <tr>
+        <th scope="row"><%= items.sku %></th>
+        <td><%= items.name %></td>
+        <td><%= items.price %></td>
+        <td>
+          <div>
+            <a class="btn btn-info mb-3" href="/smallshop/admin/item/<%= items.id %>" role="button"
+              >Edit</a
+            >
+            <a
+              class="btn btn-danger mb-3"
+              href="/smallshop/admin/item/delete/<%= items.id %>"
+              role="button"
+              >Delete</a
+            >
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <% }); %>
+      </tr>
+    </tbody>
+  </table>
+  <% } %>
+  <hr />
+  <!-- End Showing All of the item -->
 </div>

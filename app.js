@@ -1,12 +1,13 @@
 const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
+
 const createError = require('http-errors');
 
 const bodyParser = require('body-parser');
 
-const FeedbackService = require('./services/FeedbackService');
-const UsersService = require('./services/UserService');
+const FeedbackService = require('./services/Resume/FeedbackService');
+const UsersService = require('./services/Resume/AboutmeService');
 
 const feedbackService = new FeedbackService('./data/feedback.json');
 const usersService = new UsersService('./data/users.json');
@@ -14,6 +15,7 @@ const usersService = new UsersService('./data/users.json');
 const routes = require('./routes');
 const { response } = require('express');
 const res = require('express/lib/response');
+const { resolve } = require('path');
 
 module.exports = (config) => {
   const app = express();
@@ -43,16 +45,19 @@ module.exports = (config) => {
   app.use(express.static(path.join(__dirname, './static')));
   // -------- End view engine setup --------
   // -------- Start Define 'global' template variables --------
-  app.locals.siteName = 'Ken';
   app.use(async (request, response, next) => {
-    // Get all of the
+    app.locals.siteName = 'Ken';
+
+    // Get all of the users
     try {
       const all_users = await usersService.getList();
       response.locals.all_users = all_users;
-      return next();
     } catch (err) {
       return next(err);
     }
+
+    response.locals.shop_messages = request.session.shop_messages;
+    return next();
   });
 
   app.use(
