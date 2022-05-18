@@ -1,5 +1,5 @@
 // Get the model that created before
-const ItemModel = require('../../models/mongoose/item');
+const ItemModel = require('../../models/mongoose/Item');
 
 // Implememting Service class
 class ItemService {

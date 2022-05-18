@@ -9,6 +9,10 @@ const router = express.Router();
 
 module.exports = (params) => {
   router.get('/', (request, response, next) => {
+    // Add the session's information for Shop routes
+    if (!request.session.shop_messages) {
+      request.session.shop_messages = [];
+    }
     try {
       response.render('layout', {
         pageTitle: 'Small Shop',

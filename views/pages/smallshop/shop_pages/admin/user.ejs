@@ -1,12 +1,127 @@
 <div class="card-body">
-  <h5 class="card-title">Special title treatment</h5>
-  <p class="card-text">user.</p>
-  <p class="card-text">user.</p>
-  <p class="card-text">user.</p>
-  <p class="card-text">user.</p>
-  <p class="card-text">user.</p>
-  <p class="card-text">user.</p>
-  <p class="card-text">user.</p>
+  <!-- Start DIV for Add or Create User information -->
+  <div class="card text-center">
+    <div class="card-header">
+      <% if(edit_user) { %>
+      <div>Edit User</div>
+      <% } else { %>
+      <div>Add User</div>
+      <% }%>
+    </div>
+    <!-- Showing the Error of Shop Item information  -->
+    <% if(shopUser_info) { %> <% const alert_type = `${JSON.stringify(shopUser_info.type)}`; %>
+    <div class="<%= `${JSON.parse(alert_type)}` %>" role="alert">
+      <p><%= `${JSON.stringify(shopUser_info.text)}`%></p>
+    </div>
+    <% } %>
+    <!-- Add the User's nfomation -->
+    <div class="card-body">
+      <form method="POST" action="/smallshop/admin/user">
+        <!-- If We want to Edit the User, We will sent the UserId to router(Post) -->
+        <% if(edit_user) { %>
+        <!-- Post edit_user's id  -->
+        <input
+          type="hidden"
+          name="edit_userId"
+          class="form-control"
+          id="inputItemId"
+          value="<%=edit_user.id%>"
+        />
+        <!-- Edit Email -->
+        <div class="mb-3 row">
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input
+              type="email"
+              name="email"
+              autocomplete="off"
+              class="form-control"
+              id="inputEmail"
+              value="<%= edit_user.email %> "
+            />
+          </div>
+        </div>
+        <!--  Edit User Password -->
+        <div class="mb-3 row">
+          <label for="password" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" name="password" class="form-control" id="inputName" value="" />
+          </div>
+        </div>
 
-  <a href="#" class="btn btn-primary">Go somewhere</a>
+        <% } else { %>
+        <input type="hidden" name="edit_userId" class="form-control" id="inputItemId" value="" />
+        <!-- Add Email -->
+        <div class="mb-3 row">
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input
+              type="email"
+              name="email"
+              autocomplete="off"
+              class="form-control"
+              id="inputEmail"
+              value=""
+            />
+          </div>
+        </div>
+        <!--  Add User Password -->
+        <div class="mb-3 row">
+          <label for="password" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" name="password" class="form-control" id="inputName" value="" />
+          </div>
+        </div>
+        <% } %>
+
+        <!-- Add Button -->
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </div>
+      </form>
+    </div>
+    <!-- End Add the User's infomation -->
+  </div>
+  <!-- End DIV for Add User information -->
+  <hr />
+  <!-- Showing All of the User-->
+
+  <table class="table table-hover">
+    <% if(all_users) { %>
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <!-- Showing all users's -->
+    <% all_users.forEach(function(users) {%>
+    <tbody>
+      <tr>
+        <td>
+          <a> <%= users.email %> </a>
+        </td>
+        <td>
+          <div>
+            <a class="btn btn-info mb-3" href="/smallshop/admin/user/<%= users.id %>" role="button"
+              >Edit</a
+            >
+            <a
+              class="btn btn-danger mb-3"
+              href="/smallshop/admin/user/delete/<%= users.id %>"
+              role="button"
+              >Delete</a
+            >
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <% }); %>
+    <!-- End Showing users -->
+    <% }%>
+  </table>
+
+  <hr />
+  <!-- End Showing All of the item -->
 </div>

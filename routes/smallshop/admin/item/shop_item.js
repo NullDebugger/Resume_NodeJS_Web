@@ -36,9 +36,6 @@ module.exports = (params) => {
     const name = req.body.name.trim();
     const price = req.body.price.trim();
 
-    if (!req.session.shop_messages) {
-      req.session.shop_messages = [];
-    }
     // Make sure the data is complete
     if (!sku || !name || !price) {
       req.session.shop_messages.push({
