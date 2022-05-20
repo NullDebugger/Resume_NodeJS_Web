@@ -1,33 +1,51 @@
 <div class="card-header">
-  <ul class="nav nav-tabs card-header-tabs">
-    <li class="nav-item active">
-      <a class="nav-link" aria-current="true" href="/smallshop">Home</a>
-    </li>
-    <li class="nav-item active">
-      <!-- The herf is refer to the  (router's use('xxx', router)) not to the file -->
-      <a href="/smallshop/store" class="nav-link">Shop</a>
-    </li>
-    <li class="nav-item active"><a href="/smallshop/basket" class="nav-link">Basket</a></li>
-    <!-- Start Admin -->
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Admin
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/smallshop/admin/user">User</a>
-        <a class="dropdown-item" href="/smallshop/admin/item">Item</a>
-        <a class="dropdown-item" href="/smallshop/admin/order">Order</a>
-      </div>
-    </li>
-    <!-- End Admin -->
-  </ul>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item active">
+        <a class="nav-link" aria-current="true" href="/smallshop">Home</a>
+      </li>
+      <li class="nav-item active">
+        <!-- The herf is refer to the  (router's use('xxx', router)) not to the file -->
+        <a href="/smallshop/store" class="nav-link">Shop</a>
+      </li>
+      <!-- Start Admin -->
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/smallshop/admin/user">User</a>
+          <a class="dropdown-item" href="/smallshop/admin/item">Item</a>
+          <a class="dropdown-item" href="/smallshop/admin/order">Order</a>
+        </div>
+      </li>
+      <!-- End Admin -->
+    </ul>
+    <!-- Show Login User -->
+    <% if(locals.currentUser) { %>
+    <ul class="nav nav-tabs card-header-tabs">
+      <% if(locals.basketCount > 0) { %>
+      <li class="nav-item active">
+        <a href="/smallshop/basket"><%= locals.basketCount %> items in bakset </a>
+      </li>
+      <% } %>
+      <li class="nav-item active">
+        <a>Logged in as <%= locals.currentUser.email %></a>
+      </li>
+      <li class="nav-item active">
+        <a href="/smallshop/admin/user/simple_logout/<%= locals.currentUser.id %>">Logout</a>
+      </li>
+    </ul>
+    <% } %>
+    <!-- End Show Login User -->
+  </nav>
 </div>

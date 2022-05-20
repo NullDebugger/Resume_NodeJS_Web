@@ -8,12 +8,6 @@
       <div>Add Item</div>
     </div>
     <%}%>
-    <!-- Showing the Error of Shop Item information  -->
-    <% if(shop_info) { %> <% const alert_type = `${JSON.stringify(shop_info.type)}`; %>
-    <div class="<%= `${JSON.parse(alert_type)}` %>" role="alert">
-      <p><%= `${JSON.stringify(shop_info.text)}`%></p>
-    </div>
-    <% } %>
     <!-- Add the Item's nfomation -->
     <div class="card-body">
       <form method="POST" action="/smallshop/admin/item">

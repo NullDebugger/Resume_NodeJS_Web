@@ -1,12 +1,46 @@
 <div class="card-body">
-  <h5 class="card-title">Special title treatment</h5>
-  <p class="card-text">aaaaa.</p>
-  <p class="card-text">aaaaa.</p>
-  <p class="card-text">aaaaa.</p>
-  <p class="card-text">aaaaa.</p>
-  <p class="card-text">aaaaa.</p>
-  <p class="card-text">aaaaa.</p>
-  <p class="card-text">aaaaa.</p>
-
-  <a href="#" class="btn btn-primary">Go somewhere</a>
+  <!-- Start DIV for Add Item information -->
+  <div class="card text-center">
+    <div class="card-header">
+      <h1>Small Shop</h1>
+    </div>
+  </div>
+  <!-- End DIV for Add Item information -->
+  <hr />
+  <!-- Showing All of the item-->
+  <% if(all_items) {%>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">SKU</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% all_items.forEach(function(items) { %>
+      <tr>
+        <th scope="row"><%= items.sku %></th>
+        <td><%= items.name %></td>
+        <td><%= items.price %></td>
+        <td>
+          <div>
+            <a
+              class="btn btn-info mb-3"
+              href="/smallshop/store/tobasket/<%= items.id %>"
+              role="button"
+              >Add to Basket</a
+            >
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <% }); %>
+      </tr>
+    </tbody>
+  </table>
+  <% } %>
+  <hr />
+  <!-- End Showing All of the item -->
 </div>

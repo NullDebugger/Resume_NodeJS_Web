@@ -1,12 +1,57 @@
 <div class="card-body">
-  <h5 class="card-title">Special title treatment</h5>
-  <p class="card-text">basket.</p>
-  <p class="card-text">basket.</p>
-  <p class="card-text">basket.</p>
-  <p class="card-text">basket.</p>
-  <p class="card-text">basket.</p>
-  <p class="card-text">basket.</p>
-  <p class="card-text">basket.</p>
-
-  <a href="#" class="btn btn-primary">Go somewhere</a>
+  <!-- Start DIV for Add Item information -->
+  <div class="card text-center">
+    <div class="card-header">
+      <h1>Small Shop</h1>
+    </div>
+  </div>
+  <!-- End DIV for Add Item information -->
+  <hr />
+  <!-- Showing All of the item-->
+  <% if(basket_show_items) {%>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">SKU</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% basket_show_items.forEach(function(item) { %>
+      <tr>
+        <th scope="row"><%= item.sku %></th>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.quantity %></td>
+        <td>
+          <div>
+            <a
+              class="btn btn-info mb-3"
+              href="/smallshop/basket/remove/<%= item.id %>"
+              role="button"
+              >Remove from Basket</a
+            >
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <% }); %>
+      </tr>
+    </tbody>
+    <!-- Add 'Buy' action button -->
+    <tfoot>
+      <tr>
+        <td>
+          <a href="/smallshop/basket/buy">Buy Now</a>
+        </td>
+      </tr>
+    </tfoot>
+    <!-- End Add 'Buy' action button  -->
+  </table>
+  <% } %>
+  <hr />
+  <!-- End Showing All of the item -->
 </div>

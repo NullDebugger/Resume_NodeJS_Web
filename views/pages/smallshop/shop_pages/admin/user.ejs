@@ -8,13 +8,7 @@
       <div>Add User</div>
       <% }%>
     </div>
-    <!-- Showing the Error of Shop Item information  -->
-    <% if(shopUser_info) { %> <% const alert_type = `${JSON.stringify(shopUser_info.type)}`; %>
-    <div class="<%= `${JSON.parse(alert_type)}` %>" role="alert">
-      <p><%= `${JSON.stringify(shopUser_info.text)}`%></p>
-    </div>
-    <% } %>
-    <!-- Add the User's nfomation -->
+    <!-- Add the User's infomation -->
     <div class="card-body">
       <form method="POST" action="/smallshop/admin/user">
         <!-- If We want to Edit the User, We will sent the UserId to router(Post) -->
@@ -100,7 +94,9 @@
     <tbody>
       <tr>
         <td>
-          <a> <%= users.email %> </a>
+          <a href="/smallshop/admin/user/simple_login/<%= users.id%>" role="button">
+            <%= users.email %>
+          </a>
         </td>
         <td>
           <div>

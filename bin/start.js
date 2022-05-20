@@ -2,6 +2,9 @@ const http = require('http');
 // Add Mongoose
 const mongoose = require('mongoose');
 
+// Add Redis
+const Redis = require('ioredis');
+
 const config = require('../config');
 const App = require('../app');
 
@@ -13,6 +16,27 @@ async function connectToMongoose() {
     useUnifiedTopology: true,
   });
 }
+
+/* Function used to connect to Redis Database */
+function connectToRedis() {
+  const redis = new Redis(config.redis.port);
+  // Add Event hanlder, listening to is connect
+  redis.on('connect', () => {
+    console.info('Successfully connected to Redis');
+  });
+  // Add Error handler
+  redis.on('error', (error) => {
+    console.error(error);
+    process.exit(1);
+  });
+  return redis;
+}
+
+/* Function used to connect to Mysql Database */
+
+// Connect to Redis
+const redis = connectToRedis();
+config.redis.client = redis;
 
 /* Logic to start the application */
 const app = App(config);

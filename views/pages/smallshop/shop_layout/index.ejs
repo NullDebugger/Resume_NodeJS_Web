@@ -7,6 +7,17 @@
       <%- include('partials/shop_navigation') %>
       <!-- End Navigation -->
 
+      <!-- ----Showing the Error of Shop Item information----  -->
+      <% if(locals.shop_messages) { %>
+      <!-- Get the alert type from message -->
+      <% const alert_type = `${JSON.stringify(locals.shop_messages.type)}`; %>
+      <!-- Showing Alert && alert text -->
+      <div class="<%= `${JSON.parse(alert_type)}` %>" role="alert">
+        <p><%= `${JSON.stringify(locals.shop_messages.text)}`%></p>
+      </div>
+      <% } %>
+      <!-- ----End Showing the Error of Shop Item information-----  -->
+
       <!-- Start shop main body-->
       <%- include(`../shop_pages/${shop_template}`) %>
       <!-- End shop main body-->

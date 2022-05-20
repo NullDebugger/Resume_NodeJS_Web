@@ -4,12 +4,12 @@ const req = require('express/lib/request');
 const router = express.Router();
 
 module.exports = (params) => {
-  const { usersService } = params;
+  const { resumeUserService } = params;
 
   router.get('/', async (request, response, next) => {
     try {
-      const users = await usersService.getList();
-      const artwork = await usersService.getAllPhotos();
+      const users = await resumeUserService.getList();
+      const artwork = await resumeUserService.getAllPhotos();
       return response.render('layout', {
         pageTitle: 'users',
         template: '/resume/users',
@@ -23,9 +23,9 @@ module.exports = (params) => {
 
   router.get('/:title', async (request, response, next) => {
     try {
-      const information = await usersService.getInformation(request.params.title);
+      const information = await resumeUserService.getInformation(request.params.title);
       // console.log(information);
-      const artwork = await usersService.getArtwork_title(request.params.title);
+      const artwork = await resumeUserService.getArtwork_title(request.params.title);
       return response.render('layout', {
         pageTitle: 'users',
         template: 'resume/users-detail',

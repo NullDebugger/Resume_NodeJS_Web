@@ -14,13 +14,12 @@ module.exports = (params) => {
         edit_item = await ItemService.getOneItem(request.params.itemId);
       }
 
-      // Get the error information from request session
-      const shop_info = request.session.shop_messages.pop();
+      // // Get the error or success information from request session
+      // const shop_info = request.session.shop_messages.pop();
       return response.render('layout', {
         pageTitle: 'Manage Item',
         template: 'smallshop/shop_layout/index',
         shop_template: 'admin/item',
-        shop_info,
         all_items,
         edit_item,
       });

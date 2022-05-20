@@ -11,12 +11,13 @@ const { Template } = require('ejs');
 const router = express.Router();
 
 module.exports = (params) => {
-  const { usersService } = params;
+  console.log(params);
+  const { resumeUserService } = params;
 
   router.get('/', async (request, response, next) => {
     try {
-      const artwork = await usersService.getAllPhotos();
-      const topusers = await usersService.getList();
+      const artwork = await resumeUserService.getAllPhotos();
+      const topusers = await resumeUserService.getList();
       return response.render('layout', {
         pageTitle: 'Welcome',
         template: '/resume/index',

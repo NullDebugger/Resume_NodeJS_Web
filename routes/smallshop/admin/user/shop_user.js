@@ -15,16 +15,12 @@ module.exports = () => {
         edit_user = await UserService.getOneUser(request.params.userId);
       }
 
-      // Get the error or success information from request session
-      const shopUser_info = request.session.shop_messages.pop();
-
       return response.render('layout', {
         pageTitle: 'Manage Item',
         template: 'smallshop/shop_layout/index',
         shop_template: 'admin/user',
         all_users,
         edit_user,
-        shopUser_info,
       });
     } catch (err) {
       return next(err);
@@ -94,5 +90,27 @@ module.exports = () => {
       return res.redirect('/smallshop/admin/user');
     }
   });
+
+  /* simple_login, just get the user id to session and store in session */
+  router.get('/simple_login/:userId', (req, res, next) => {
+    console.log('I am test', req.params);
+    req.session.userId = req.params.userId;
+    req.session.shop_messages.push({
+      type: 'alert alert-success',
+      text: 'Useer successfully switched',
+    });
+    return res.redirect('/smallshop/admin/user');
+  });
+
+  /* simple_logout, just remove the user id from session */
+  router.get('/simple_logout/:userId', (req, res, next) => {
+    req.session.userId = '';
+    req.session.shop_messages.push({
+      type: 'alert alert-success',
+      text: 'User successfully logout',
+    });
+    return res.redirect('/smallshop/admin/user');
+  });
+
   return router;
 };
