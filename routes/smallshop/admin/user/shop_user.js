@@ -93,7 +93,7 @@ module.exports = () => {
 
   /* simple_login, just get the user id to session and store in session */
   router.get('/simple_login/:userId', (req, res, next) => {
-    console.log('I am test', req.params);
+    // console.log('I am test', req.params);
     req.session.userId = req.params.userId;
     req.session.shop_messages.push({
       type: 'alert alert-success',

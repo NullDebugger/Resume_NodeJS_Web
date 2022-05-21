@@ -2,13 +2,13 @@
   <!-- Start DIV for Add Item information -->
   <div class="card text-center">
     <div class="card-header">
-      <h1>Small Shop</h1>
+      <h1>My Basket</h1>
     </div>
   </div>
   <!-- End DIV for Add Item information -->
   <hr />
   <!-- Showing All of the item-->
-  <% if(basket_show_items) {%>
+  <% if(basket_show_items && basket_show_items.length > 0) {%>
   <table class="table table-hover">
     <thead>
       <tr>

@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 // Add Redis
 const Redis = require('ioredis');
 
+// Add sequelize for MySQL (ORM sturcture Database)
+const Sequeelize = require('sequelize');
+
 const config = require('../config');
 const App = require('../app');
 
@@ -32,11 +35,27 @@ function connectToRedis() {
   return redis;
 }
 
-/* Function used to connect to Mysql Database */
-
 // Connect to Redis
 const redis = connectToRedis();
 config.redis.client = redis;
+
+/* Function used to connect to Mysql Database */
+function connectToMySQL() {
+  const sequelize = new Sequeelize(config.mysql.options);
+  sequelize
+    .authenticate()
+    .then(() => {
+      console.log('Successfully connected to MYSQL');
+    })
+    .catch((error) => {
+      console.error(error);
+      process.exit(1);
+    });
+  return sequelize;
+}
+// Connect to MYSQL
+const mysql = connectToMySQL();
+config.mysql.client = mysql;
 
 /* Logic to start the application */
 const app = App(config);

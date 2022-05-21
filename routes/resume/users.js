@@ -24,7 +24,6 @@ module.exports = (params) => {
   router.get('/:title', async (request, response, next) => {
     try {
       const information = await resumeUserService.getInformation(request.params.title);
-      // console.log(information);
       const artwork = await resumeUserService.getArtwork_title(request.params.title);
       return response.render('layout', {
         pageTitle: 'users',

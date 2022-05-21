@@ -11,7 +11,7 @@ const { Template } = require('ejs');
 const router = express.Router();
 
 module.exports = (params) => {
-  console.log(params);
+  // console.log(params);
   const { resumeUserService } = params;
 
   router.get('/', async (request, response, next) => {

@@ -81,7 +81,7 @@ module.exports = (params) => {
   });
   /* Deletee Item */
   router.get('/delete/:itemId', async (request, response, next) => {
-    console.log('I am test', request.params.itemId);
+    // console.log('I am delete router test:', request.params.itemId);
     try {
       await ItemService.removeItem(request.params.itemId);
     } catch (err) {
