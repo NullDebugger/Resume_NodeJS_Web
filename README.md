@@ -6,6 +6,8 @@ How to Run this project
 4. Run the command: npm run dev
 5. Open Chrome: http://localhost:3000
 
+Tip: Make sure the Docker's container is open
+
 
 
 Reference: https://www.linkedin.com/learning/instructors/daniel-khan?u=79987266
